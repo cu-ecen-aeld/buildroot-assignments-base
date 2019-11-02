@@ -5,6 +5,15 @@ We will be using rpi3
 
 Configuration of rpi  for Buildroot:
 ----------------------------
+Other configuration of rpi:
+----------------------------
+
+Configure Buildroot
+-------------------
+
+There are two RaspberryPi defconfig files in Buildroot, one for each
+major variant, which you should base your work on:
+
 For models A, B, A+ or B+:
 
   $ make raspberrypi_defconfig
