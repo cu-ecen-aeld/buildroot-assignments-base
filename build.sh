@@ -25,7 +25,7 @@ then
 		echo "Then add packages as needed to complete the installation, re-running ./save_config.sh as needed"
 		echo "If this is your first time building for a harware platform you might want to consider using your"
 		echo "qemu defconfig at ${QEMU_MODIFIED_DEFCONFIG} as a reference"
-		make -C buildroot defconfig BR2_EXTERNAL=${EXTERNAL_REL_BUILDROOT} BBR2_DEFCONFIG=${AESD_DEFAULT_DEFCONFIG}
+		make -C buildroot defconfig BR2_EXTERNAL=${EXTERNAL_REL_BUILDROOT} BR2_DEFCONFIG=${AESD_DEFAULT_DEFCONFIG}
 	fi
 else
 	echo "\n USING EXISTING BUILDROOT CONFIG \n"
