@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_AESD_PROJECT_PATH/package/aesd-project/Config.in"
