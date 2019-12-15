@@ -1,15 +1,15 @@
-From 56d3871aefcc4725f1d51c206fc5bfeed96568cf Mon Sep 17 00:00:00 2001
+From bf75ff5956fd0c21f1e0478a73fa3ac54230c542 Mon Sep 17 00:00:00 2001
 From: MohitRane8 <mohit.rane@colorado.edu>
-Date: Sat, 14 Dec 2019 17:41:08 -0700
-Subject: [PATCH 1/1] added uart 1, 4 and 5 support
+Date: Sun, 15 Dec 2019 01:54:54 -0700
+Subject: [PATCH] Added UART 1, 4 and 5 support for BeagleBone Black. Original
+ Author: Matwey V. Kornilov, Edited by: Mohit Rane
 
-Signed-off-by: MohitRane8 <mohit.rane@colorado.edu>
 ---
  .../arch/arm/boot/dts/am335x-bone-common.dtsi | 42 +++++++++++++++++++
  1 file changed, 42 insertions(+)
 
 diff --git a/output/build/linux-4796173fc58688055a99a1cef19a839174067220/arch/arm/boot/dts/am335x-bone-common.dtsi b/output/build/linux-4796173fc58688055a99a1cef19a839174067220/arch/arm/boot/dts/am335x-bone-common.dtsi
-index e13aed0963..5839f7f159 100644
+index e13aed0963..d3983a06c3 100644
 --- a/output/build/linux-4796173fc58688055a99a1cef19a839174067220/arch/arm/boot/dts/am335x-bone-common.dtsi
 +++ b/output/build/linux-4796173fc58688055a99a1cef19a839174067220/arch/arm/boot/dts/am335x-bone-common.dtsi
 @@ -99,6 +99,27 @@
@@ -36,7 +36,7 @@ index e13aed0963..5839f7f159 100644
 +            AM33XX_IOPAD(0x8c0, PIN_OUTPUT_PULLDOWN | MUX_MODE4)    /* lcd_data8.uart5_txd */
 +        >;
 +    };
-+    
++
  	clkout2_pin: pinmux_clkout2_pin {
  		pinctrl-single,pins = <
  			AM33XX_IOPAD(0x9b4, PIN_OUTPUT_PULLDOWN | MUX_MODE3)	/* xdma_event_intr1.clkout2 */
