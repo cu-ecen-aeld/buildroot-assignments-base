@@ -1,4 +1,4 @@
-include $(sort $(wildcard $(BR2_EXTERNAL_AESD_PROJECT_PATH)/package/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_AESD_ASSIGNMENTS_PATH)/package/*/*.mk))
 
 # flash-my-board:
 #     $(BR2_EXTERNAL_BAR_42_PATH)/board/my-board/flash-image \
