@@ -1,0 +1,19 @@
+#! /bin/sh
+
+
+case "$1" in
+start)
+echo "Starting init script for Bluetooth module"
+
+modprobe hci_uart
+hciattach /dev/ttyS0 bcm43xx 115200 noflow -
+hciconfig hic0 up
+/usr/libexec/bluetooth/bluetoothd -E &
+;;
+stop)
+;;
+*)
+echo "Usage: $0 {start|stop}"
+exit 1
+esac
+exit 0
