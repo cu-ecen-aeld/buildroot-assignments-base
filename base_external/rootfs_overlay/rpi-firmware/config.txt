@@ -19,6 +19,6 @@ gpu_mem_256=100
 gpu_mem_512=100
 gpu_mem_1024=100
 
-dtparam=i2c_arm=on
+dtparam=spi=on
 
 
