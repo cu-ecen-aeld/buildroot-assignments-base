@@ -45,7 +45,7 @@ class InvalidValueLengthException(dbus.exceptions.DBusException):
 class FailedException(dbus.exceptions.DBusException):
     _dbus_error_name = 'org.bluez.Error.Failed'
 
-
+#add discoverable as one of the properties
 class Advertisement(dbus.service.Object):
     PATH_BASE = '/org/bluez/example/advertisement'
 
@@ -60,6 +60,7 @@ class Advertisement(dbus.service.Object):
         self.local_name = None
         self.include_tx_power = None
         self.data = None
+        self.Discoverable = None
         dbus.service.Object.__init__(self, bus, self.path)
 
     def get_properties(self):
@@ -81,11 +82,13 @@ class Advertisement(dbus.service.Object):
             properties['LocalName'] = dbus.String(self.local_name)
         if self.include_tx_power is not None:
             properties['IncludeTxPower'] = dbus.Boolean(self.include_tx_power)
-
+        if self.Discoverable  is not None:
+            properties['IncludeDiscoverable'] = dbus.Boolean(self.Discoverable )
         if self.data is not None:
             properties['Data'] = dbus.Dictionary(
                 self.data, signature='yv')
         return {LE_ADVERTISEMENT_IFACE: properties}
+ 
 
     def get_path(self):
         return dbus.ObjectPath(self.path)
