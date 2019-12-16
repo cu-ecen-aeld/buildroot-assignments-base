@@ -4,13 +4,13 @@
 case "$1" in
 start)
 echo "Starting init script for I2C module"
-modprobe spidev
-modprobe spi-bcm2835
+modprobe i2c-dev
+modprobe i2c-bcm2835
 ;;
 stop)
 echo "Removing user modules"
-rmmod spi-bcm2835
-rmmo spidev
+rmmod i2c-bcm2835
+rmmo i2c-dev
 ;;
 *)
 echo "Usage: $0 {start|stop}"
