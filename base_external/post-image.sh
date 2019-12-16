@@ -13,11 +13,11 @@ do
 	case "${arg}" in
 		
 		# SPI/I2C
-		--add-I2C)
-		if ! grep -qE '^dtparam=i2c_arm=on' "${BINARIES_DIR}/rpi-firmware/config.txt"; then
+		--add-SPI)
+		if ! grep -qE '^dtparam=spi=on' "${BINARIES_DIR}/rpi-firmware/config.txt"; then
 			cat << __EOF__ >> "${BINARIES_DIR}/rpi-firmware/config.txt"
-# enable I2C
-dtparam=i2c_arm=on
+# enable SPi
+dtparam=spi=on
 __EOF__
 		fi
 		;;
