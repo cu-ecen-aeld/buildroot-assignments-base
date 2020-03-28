@@ -24,3 +24,4 @@ For model 3 B and B+:
 For model 4 B:
 
   $ make raspberrypi4_defconfig
+
