@@ -1,0 +1,19 @@
+#! /bin/sh
+
+
+case "$1" in
+start)
+echo "Starting init script for I2C module"
+modprobe spidev
+modprobe spi-bcm2835
+;;
+stop)
+echo "Removing user modules"
+rmmod spi-bcm2835
+rmmo spidev
+;;
+*)
+echo "Usage: $0 {start|stop}"
+exit 1
+esac
+exit 0
