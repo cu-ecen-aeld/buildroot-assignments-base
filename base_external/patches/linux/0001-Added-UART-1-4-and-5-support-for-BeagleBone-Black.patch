@@ -1,0 +1,73 @@
+From 72401b2abab99007f02d1a036e9929241bd945be Mon Sep 17 00:00:00 2001
+From: MohitRane8 <mohit.rane@colorado.edu>
+Date: Sun, 15 Dec 2019 13:39:43 -0700
+Subject: [PATCH] Added UART 1, 4 and 5 support for BeagleBone Black. Original
+ Author: Matwey V. Kornilov, Edited by: Mohit Rane
+
+---
+ arch/arm/boot/dts/am335x-bone-common.dtsi | 42 +++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+
+diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335x-bone-common.dtsi
+index e13aed0963..51a6be7ed5 100644
+--- a/arch/arm/boot/dts/am335x-bone-common.dtsi
++++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
+@@ -99,6 +99,27 @@
+ 		>;
+ 	};
+ 
++    uart1_pins: pinmux_uart1_pins {
++        pinctrl-single,pins = <
++            AM33XX_IOPAD(0x980, PIN_INPUT_PULLUP | MUX_MODE0)   /* uart1_rxd.uart1_rxd */
++            AM33XX_IOPAD(0x984, PIN_OUTPUT_PULLDOWN | MUX_MODE0)    /* uart1_txd.uart1_txd */
++        >;
++    };
++
++    uart4_pins: pinmux_uart4_pins {
++        pinctrl-single,pins = <
++            AM33XX_IOPAD(0x870, PIN_INPUT_PULLUP | MUX_MODE6)   /* gpmc_wait0.uart4_rxd */
++            AM33XX_IOPAD(0x874, PIN_OUTPUT_PULLDOWN | MUX_MODE6)    /* gpmc_wpn.uart4_txd */
++        >;
++    };
++
++    uart5_pins: pinmux_uart5_pins {
++        pinctrl-single,pins = <
++            AM33XX_IOPAD(0x8c4, PIN_INPUT_PULLUP | MUX_MODE4)   /* lcd_data9.uart5_rxd */
++            AM33XX_IOPAD(0x8c0, PIN_OUTPUT_PULLDOWN | MUX_MODE4)    /* lcd_data8.uart5_txd */
++        >;
++    };
++
+ 	clkout2_pin: pinmux_clkout2_pin {
+ 		pinctrl-single,pins = <
+ 			AM33XX_IOPAD(0x9b4, PIN_OUTPUT_PULLDOWN | MUX_MODE3)	/* xdma_event_intr1.clkout2 */
+@@ -195,6 +216,27 @@
+ 	status = "okay";
+ };
+ 
++&uart1 {
++    pinctrl-names = "default";
++    pinctrl-0 = <&uart1_pins>;
++
++    status = "okay";
++};
++
++&uart4 {
++    pinctrl-names = "default";
++    pinctrl-0 = <&uart4_pins>;
++
++    status = "okay";
++};
++
++&uart5 {
++    pinctrl-names = "default";
++    pinctrl-0 = <&uart5_pins>;
++
++    status = "okay";
++};
++
+ &usb {
+ 	status = "okay";
+ };
+-- 
+2.17.1
+
