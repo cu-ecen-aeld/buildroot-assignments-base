@@ -1,2 +1,2 @@
-name: AESD_A4
-description: External package for Buildroot in assignment 4
+name: assignment_base
+description: Base customization for assignment
