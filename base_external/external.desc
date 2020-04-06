@@ -1,2 +1,2 @@
-name: assignment_base
-description: Base customization for assignment
+name: project_base
+description: Base for buildroot projects
