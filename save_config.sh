@@ -6,7 +6,7 @@ cd `dirname $0`
 source shared.sh
 mkdir -p base_external/configs/
 make -C buildroot savedefconfig BR2_DEFCONFIG=${AESD_MODIFIED_DEFCONFIG_REL_BUILDROOT}
-make -C buildroot linux-update-defconfig BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE=../base_external/configs/aesd_qemu_linux_defconfig
+make -C buildroot linux-update-defconfig BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE=../base_external/configs/aesd_rpi_linux_defconfig
 
 if [ -e buildroot/.config ] && [ -e buildroot/output/build/linux-*/.config ]; then
 	grep "BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE" buildroot/.config > /dev/null
