@@ -1,0 +1,41 @@
+From 3e53602b4159a3f1f2eff8fd9b1913a38d3868c6 Mon Sep 17 00:00:00 2001
+From: Akshita Bhasin <akshita.bhasin@colorado.edu>
+Date: Fri, 17 April 2020 10:36:08 -0700
+Subject: [PATCH] enable-i2c1: enable and configure i2c-1
+---
+ arch/arm/boot/dts/am335x-bone.dtsi | 15 +++++++++++++++++
+ 1 file changed, 15 insertions(+)
+diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335x-bone-common.dtsi
+index 9abc1f3&i2c2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c2_pins>;..d3ec5c3 100644
+--- a/arch/arm/boot/dts/am335x-bone-common.dtsi
++++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
+@@ -85,5 +85,12 @@
+ 		>;
+ 	};
+
++	i2c1_pins: pinmux_i2c1_pins {
++		pinctrl-single,pins = <
++			AM33XX_IOPAD(0x958, PIN_INPUT_PULLUP | MUX_MODE2)       /* spi0_d1.i2c1_sda */
++			AM33XX_IOPAD(0x95c, PIN_INPUT_PULLUP | MUX_MODE2)       /* spi0_cs0.i2c1_scl */
++		>;
++	};
++
+	i2c2_pins: pinmux_i2c2_pins {
+		pinctrl-single,pins = <
+@@ -294,4 +299,12 @@
+
++&i2c1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c1_pins>;
++
++	status = "okay";
++	clock-frequency = <100000>;
++};
++
+ &i2c2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c2_pins>;
+-- 
+2.17.2
