@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# File: S99canmodules
+#
+# Description: Script to start/stop scull device
+#
+# Author: Royce Muchmore
+#
+# Tools:
+#
+# Leveraged Code:
+#   Mastering Embedded Linux Programming - Chapter 10 Starting Up - The init Program
+#
+
+CAN_DEVICE="can"
+DEVICE_PATH=/sbin
+
+case "$1" in
+   start) 
+      echo "Starting $CAN_DEVICE" 
+      ${DEVICE_PATH}/${CAN_DEVICE}_load
+      ;; 
+   stop) 
+      echo "Stopping $CAN_DEVICE" 
+      ${DEVICE_PATH}/${CAN_DEVICE}_unload
+      ;; 
+   *) 
+      echo "Usage: $0 {start|stop}" 
+   exit 1 
+esac 
+
+exit 0

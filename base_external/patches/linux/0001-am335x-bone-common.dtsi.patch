@@ -1,0 +1,63 @@
+diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335x-bone-common.dtsi
+index ee28b86..41fda80 100644
+--- a/arch/arm/boot/dts/am335x-bone-common.dtsi
++++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
+@@ -4,6 +4,7 @@
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License version 2 as
+  * published by the Free Software Foundation.
++ *
+  */
+ 
+ / {
+@@ -69,6 +70,20 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&clkout2_pin>;
+ 
++	dcan0_pins: pinmux_dcan0_pins {
++		pinctrl-single,pins = <
++			AM33XX_IOPAD(0x97c, PIN_INPUT_PULLUP  | MUX_MODE2) /* (D17) uart1_rtsn.dcan0_rx */
++			AM33XX_IOPAD(0x978, PIN_OUTPUT_PULLUP | MUX_MODE2) /* (D18) uart1_ctsn.dcan0_tx */
++		>;
++	};
++
++	dcan1_pins: pinmux_dcan1_pins {
++		pinctrl-single,pins = <
++			AM33XX_IOPAD(0x984, PIN_INPUT_PULLUP  | MUX_MODE2) /* (D15) uart1_txd.dcan1_rx */
++			AM33XX_IOPAD(0x980, PIN_OUTPUT_PULLUP | MUX_MODE2) /* (D16) uart1_rxd.dcan1_tx */
++		>;
++	};
++
+ 	user_leds_s0: user_leds_s0 {
+ 		pinctrl-single,pins = <
+ 			AM33XX_IOPAD(0x854, PIN_OUTPUT_PULLDOWN | MUX_MODE7)	/* gpmc_a5.gpio1_21 */
+@@ -253,7 +267,7 @@
+ 
+ &i2c2 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&i2c2_pins>;
++	//pinctrl-0 = <&i2c2_pins>;
+ 
+ 	status = "okay";
+ 	clock-frequency = <100000>;
+@@ -299,6 +313,20 @@
+ 	};
+ };
+ 
++&dcan0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&dcan0_pins>;
++
++	status = "okay";
++};
++
++&dcan1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&dcan1_pins>;
++
++	status = "okay";
++};
++
+ /include/ "tps65217.dtsi"
+ 
+ &tps {

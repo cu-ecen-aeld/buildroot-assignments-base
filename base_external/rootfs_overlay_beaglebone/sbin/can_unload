@@ -1,0 +1,16 @@
+#!/bin/sh
+module=can
+
+# Kernel version
+KERNEL=`uname -r`
+MODULE_DIR="/lib/modules/${KERNEL}/kernel/net/can"
+DRIVER_MODULE_DIR="/lib/modules/${KERNEL}/kernel/drivers/net/can"
+
+# Unload protocol modules 
+rmmod ${MODULE_DIR}/${module}-raw.ko || exit 1
+rmmod ${MODULE_DIR}/${module}.ko || exit 1
+
+# Unload driver modules 
+rmmod ${DRIVER_MODULE_DIR}/c_can/c_${module}_platform.ko || exit 1
+rmmod ${DRIVER_MODULE_DIR}/c_can/c_${module}.ko || exit 1
+rmmod ${DRIVER_MODULE_DIR}/${module}-dev.ko || exit 1

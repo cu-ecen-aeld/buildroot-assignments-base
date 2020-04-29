@@ -9,3 +9,17 @@ auto usb0
 iface usb0 inet static
         address 192.168.0.2
         netmask 255.255.255.0
+
+auto can0
+iface can0 inet manual
+	#pre-up ip link set $IFACE type can bitrate 125000 listen-only off
+	pre-up /sbin/ip link set can0 type can bitrate 125000
+	up /sbin/ifconfig can0 up
+	down /sbin/ifconfig can0 down
+
+auto can1
+iface can1 inet manual
+	#pre-up ip link set $IFACE type can bitrate 125000 listen-only off
+	pre-up /sbin/ip link set can1 type can bitrate 125000
+	up /sbin/ifconfig can1 up
+	down /sbin/ifconfig can1 down
