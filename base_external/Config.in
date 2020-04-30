@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL_assignment_base_PATH/package/epaper-module/Config.in"
+source "$BR2_EXTERNAL_assignment_base_PATH/package/einkapp/Config.in"

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_EPAPER_MODULE
+	bool "epaper-module"
+	help
+	  Includes the epaper module
