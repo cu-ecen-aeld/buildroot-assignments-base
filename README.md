@@ -6,7 +6,7 @@ This is an example buildroot project for OpenCV 3 on hardware platform Raspberry
 
 ## How to use it
 1. git clone the repository
-2. Follow the instruction on [wiki page]()
+2. Follow the instruction on [wiki page](https://github.com/cu-ecen-5013/buildroot-assignments-base/wiki/OpenCV-3-Setup-in-Buildroot)
 <br/>
 
 **Hardware Requirement:**<br/>
