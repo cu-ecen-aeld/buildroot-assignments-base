@@ -1,0 +1,23 @@
+#!/bin/sh
+
+case "$1" in
+start)
+echo "Loading I2C,SPI and Wifi modules"
+modprobe i2c-bcm2835
+modprobe i2c-dev
+modprobe spi-bcm2835
+modprobe brcmfmac
+;;
+stop)
+echo "Removing Loaded modules"
+rmmod i2c-bcm2835
+rmmod i2c-dev
+rmmod spi-bcm2835
+rmmod brcmfcmac
+;;
+*)
+echo "Usage: $0 {start|stop}"
+exit 1
+esac
+exit 0
+

@@ -1,0 +1,19 @@
+#! /bin/sh
+case "$1" in
+	start)
+		echo "Eink display driver load"
+		cd ../../lib/modules/4.19.23-v7/extra
+		sh eink_load
+		;;
+	stop)
+		echo "Eink driver unload"
+		cd ../../lib/modules/4.19.23-v7/extra
+		sh eink_unload
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+	exit 1
+esac
+
+exit 0
+
