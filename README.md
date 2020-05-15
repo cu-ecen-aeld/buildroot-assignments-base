@@ -1,27 +1,27 @@
-# buildroot-rpi
+# buildroot-hw-rpi-opencv-br-2020.02
 
+## Project Description
+This is an example buildroot project for OpenCV 3 on hardware platform Raspberry Pi 4.
+<br/>
 
-We will be using rpi3
+## How to use it
+1. git clone the repository
+2. Follow the instruction on [wiki page](https://github.com/cu-ecen-5013/buildroot-assignments-base/wiki/OpenCV-3-Setup-in-Buildroot)
+<br/>
 
-Configuration of rpi  for Buildroot:
-----------------------------
-For models A, B, A+ or B+:
+**Hardware Requirement:**<br/>
+1. Raspberry Pi 4 (you can try other platform)
+2. Keyboard
+3. UVC camera (I used Logitech C270 webcam)
+4. Display(Optional, you can view image directly on Raspberry Pi this way)<
+<br/>
 
-  $ make raspberrypi_defconfig
-
-For model Zero (model A+ in smaller form factor):
-
-  $ make raspberrypi0_defconfig
-
-For model 2 B:
-
-  $ make raspberrypi2_defconfig
-
-For model 3 B and B+:
-
-  $ make raspberrypi3_defconfig
-
-For model 4 B:
-
-  $ make raspberrypi4_defconfig
+**Build Platform**<br/>
+Ubuntu 18.04(tested)<br/>
+Ubuntu 16.04(haven't tested yet)<br/>
+<br/>
+**Target Platform**<br/>
+Raspberry Pi 4 B (tested)<br/>
+Raspberry Pi 3 B (haven't tested yet)<br/>
+<br/>
 

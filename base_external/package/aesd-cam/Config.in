@@ -1,0 +1,5 @@
+
+config BR2_PACKAGE_AESD_CAM
+	bool "aesd-cam"
+	help
+	  Includes the function that capture image and save it as png format
