@@ -21,6 +21,8 @@ endef
 #TODO: Add required executables or scripts below
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/writer $(TARGET_DIR)/bin
+	$(INSTALL) -d 0755 $(@D)/conf/ $(TARGET_DIR)/bin/conf/
+	$(INSTALL) -m 0755 $(@D)/conf/* $(TARGET_DIR)/bin/conf/
 endef
 
 
