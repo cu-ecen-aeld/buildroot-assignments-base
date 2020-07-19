@@ -12,6 +12,7 @@ AESD_ASSIGNMENTS_VERSION = '#COMMIT VERSION NUMBER'
 # Your site should start with git@github.com:
 AESD_ASSIGNMENTS_SITE = '#GITHUB REPOSITORY LINK'
 AESD_ASSIGNMENTS_SITE_METHOD = git
+AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 
 
 define AESD_ASSIGNMENTS_BUILD_CMDS
@@ -21,6 +22,7 @@ endef
 #TODO: Add required executables or scripts below
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/writer $(TARGET_DIR)/bin
+	$(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment4/* $(TARGET_DIR)/bin
 	$(INSTALL) -d 0755 $(@D)/conf/ $(TARGET_DIR)/bin/conf/
 	$(INSTALL) -m 0755 $(@D)/conf/* $(TARGET_DIR)/bin/conf/
 endef
