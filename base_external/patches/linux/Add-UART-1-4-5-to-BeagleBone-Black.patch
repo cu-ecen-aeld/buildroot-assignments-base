@@ -2,7 +2,7 @@ From 72401b2abab99007f02d1a036e9929241bd945be Mon Sep 17 00:00:00 2001
 From: MohitRane8 <mohit.rane@colorado.edu>
 Date: Sun, 15 Dec 2019 13:39:43 -0700
 Subject: [PATCH] Added UART 1, 4 and 5 support for BeagleBone Black. Original
- Author: Matwey V. Kornilov, Edited by: Mohit Rane
+ Author: Matwey V. Kornilov, Edited by: Mohit Rane, Edited By: Aditya Varshney
 
 ---
  arch/arm/boot/dts/am335x-bone-common.dtsi | 42 +++++++++++++++++++++++
@@ -12,7 +12,7 @@ diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335
 index e13aed0963..51a6be7ed5 100644
 --- a/arch/arm/boot/dts/am335x-bone-common.dtsi
 +++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
-@@ -99,6 +99,27 @@
+@@ -93,6 +93,27 @@
  		>;
  	};
  
@@ -37,9 +37,9 @@ index e13aed0963..51a6be7ed5 100644
 +        >;
 +    };
 +
- 	clkout2_pin: pinmux_clkout2_pin {
- 		pinctrl-single,pins = <
- 			AM33XX_IOPAD(0x9b4, PIN_OUTPUT_PULLDOWN | MUX_MODE3)	/* xdma_event_intr1.clkout2 */
+ 	cpsw_default: cpsw_default {
+		pinctrl-single,pins = <
+ 			/* Slave 1 */
 @@ -195,6 +216,27 @@
  	status = "okay";
  };
@@ -70,4 +70,3 @@ index e13aed0963..51a6be7ed5 100644
  };
 -- 
 2.17.1
-
