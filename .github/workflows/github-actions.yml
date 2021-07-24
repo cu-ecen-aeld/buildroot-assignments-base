@@ -14,6 +14,7 @@ jobs:
               SSH_PRIVATE_KEY_BASE64: ${{ secrets.SSH_PRIVATE_KEY_BASE64 }}
               SSH_AUTH_SOCK: /tmp/ssh_agent.sock
             run: |
+              if [ -z "${SSH_PRIVATE_KEY_BASE64}" ]; then echo "You need to define your private key for buildroot builds to work with your runnner.  See instructions in https://github.com/cu-ecen-aeld/aesd-assignments/wiki/Setting-up-Github-Actions"; exit 1; fi
               mkdir -p ~/.ssh
               ssh-keyscan github.com >> ~/.ssh/known_hosts
               ssh-agent -a $SSH_AUTH_SOCK > /dev/null
