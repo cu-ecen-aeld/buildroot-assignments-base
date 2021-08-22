@@ -9,31 +9,14 @@ jobs:
           - uses: actions/checkout@v2
             name: Checkout submodules
           - uses: textbook/git-checkout-submodule-action@2.1.1
-          - name: Setup SSH agent
-            env:
-              SSH_PRIVATE_KEY_BASE64: ${{ secrets.SSH_PRIVATE_KEY_BASE64 }}
-              SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-            run: |
-              if [ -z "${SSH_PRIVATE_KEY_BASE64}" ]; then echo "You need to define your private key for buildroot builds to work with your runnner.  See instructions in https://github.com/cu-ecen-aeld/aesd-assignments/wiki/Setting-up-Github-Actions"; exit 1; fi
-              mkdir -p ~/.ssh
-              ssh-keyscan github.com >> ~/.ssh/known_hosts
-              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-              echo ${SSH_PRIVATE_KEY_BASE64} | openssl base64 -A -d | ssh-add -
-              cat ~/.ssh/known_hosts
-          - name: Checkout
-            env:
-              SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-              GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
-            run: |
-              git clone git@github.com:cu-ecen-aeld/assignments-complete-private.git
+          - uses: webfactory/ssh-agent@v0.5.3
+            with:
+                ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: Run full test
             env:
-              SSH_AUTH_SOCK: /tmp/ssh_agent.sock
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
             run: ./full-test.sh
           - name: Cleanup
             if: always()
-            env:
-              SSH_AUTH_SOCK: /tmp/ssh_agent.sock
             run: |
               ssh-add -D
