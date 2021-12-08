@@ -294,7 +294,7 @@ static bool hr_msrmt_cb(void *user_data)
 	uint32_t cur_ee;
 
 	pdu[0] = 0x06;
-	pdu[1] = 90 + (rand() % 40);
+	pdu[1] = 90;
 
 	if (expended_present) {
 		pdu[0] |= 0x08;
