@@ -1,0 +1,5 @@
+
+config BR2_PACKAGE_BTTEST
+	bool "bttest"
+	help
+	  Includes the i2c userland executable which detects, reads and writes to the TMP102 I2C based sensor
