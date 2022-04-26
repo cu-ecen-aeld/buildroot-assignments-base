@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL_project_base_PATH/package/rtimulib/Config.in"
+source "$BR2_EXTERNAL_project_base_PATH/package/sense-hat/Config.in"
