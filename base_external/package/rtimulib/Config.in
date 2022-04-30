@@ -1,0 +1,4 @@
+config BR2_PACKAGE_RTIMULIB
+	bool "rtimulib"
+	help
+	  Connects a 9-dof, 10-dof or 11-dof IMU to an embedded Linux system and obtain Kalman-filtered quaternion or Euler angle pose data.
