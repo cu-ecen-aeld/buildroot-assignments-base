@@ -6,7 +6,7 @@
 ##############################################################
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
-AESD_ASSIGNMENTS_VERSION = '74c746ee1cb38030e8860193ad9b8d03e36280c5'
+AESD_ASSIGNMENTS_VERSION = '6b15a1af1f24927e805ce091c2b4b649967e495e'
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
@@ -20,6 +20,8 @@ endef
 
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 	# Install config files
+	@echo ">>> Installing AESD assignments into target filesystem"
+
 	$(INSTALL) -d 0755 $(@D)/conf/ $(TARGET_DIR)/etc/finder-app/conf/
         $(INSTALL) -m 0755 $(@D)/conf/* $(TARGET_DIR)/etc/finder-app/conf/
         $(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment4/* $(TARGET_DIR)/bin

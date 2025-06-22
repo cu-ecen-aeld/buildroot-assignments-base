@@ -1,2 +1,1 @@
-BR2_PACKAGE_AESD_ASSIGNMENTS=y
-
+include $(sort $(wildcard $(BR2_EXTERNAL_project_base_PATH)/package/*/*.mk))
