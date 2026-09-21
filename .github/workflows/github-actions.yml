@@ -11,17 +11,28 @@ jobs:
         runs-on: self-hosted
         timeout-minutes: 120
         steps:
-          - uses: actions/checkout@v2
-          - name: Checkout submodules
-            run: git submodule update --init --recursive
-          - uses: webfactory/ssh-agent@v0.5.3
+          - uses: actions/checkout@v7
             with:
-                ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+              clean: false
+              submodules: 'recursive'
+            env:
+            # This forces Git to accept the parent repository and all submodules as safe,
+            # overriding the temporary HOME sandbox behavior.
+              GIT_CONFIG_COUNT: 2
+              GIT_CONFIG_KEY_0: safe.directory
+              GIT_CONFIG_VALUE_0: '${{ github.workspace }}'
+              GIT_CONFIG_KEY_1: safe.directory
+              GIT_CONFIG_VALUE_1: '${{ github.workspace }}/*'
+          # Only needed for private repositories, add this step and the cleanup
+          # step below when using ssh access to private repositories
+          #- uses: ./.github/actions/ssh-key
+          #  with:
+          #    ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
             run: ./full-test.sh
-          - name: Cleanup
-            if: always()
-            run: |
-              ssh-add -D
+          #- uses: ./.github/actions/ssh-key
+          #  if: always()
+          #  with:
+          #    cleanup: 'true'
